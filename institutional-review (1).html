@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Institutional Review — UCLA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1a2540;
+    --navy-soft:#2b3654;
+    --red:#c94a36;
+    --red-dark:#a83a29;
+    --muted:#5c6478;
+    --muted-lt:#8890a0;
+    --line:#e4e2dc;
+    --bg:#ffffff;
+    --paper:#faf9f6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--navy);
+    font-family:'Source Serif 4', Georgia, serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--red); color:#fff;}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .sans{font-family:'Inter', sans-serif;}
+
+  header{padding:26px 6vw 24px; border-bottom:1px solid var(--line); position:sticky; top:0; background:#fff; z-index:50;}
+  .header-inner{max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;}
+  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:20px;}
+  .brand span{color:var(--red);}
+  nav{display:flex; gap:26px; font-family:'Inter', sans-serif; font-size:14px; color:var(--muted);}
+  nav a{text-decoration:none; transition:color .2s ease;}
+  nav a:hover{color:var(--navy);}
+  @media (max-width:900px){ nav{display:none;} }
+
+  .hero{padding:80px 6vw 60px;}
+  .hero-inner{max-width:760px; margin:0 auto;}
+  .badge{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:11.5px;
+    letter-spacing:.1em; color:var(--red); border:1px solid var(--red); padding:8px 14px;
+    margin-bottom:34px; transform:rotate(-1deg);
+  }
+  .hero h1{
+    font-family:'Fraunces', serif; font-weight:500; font-size:clamp(34px, 5vw, 50px);
+    line-height:1.14; letter-spacing:-.01em; margin:0 0 26px; max-width:15ch;
+  }
+  .hero p.lede{font-size:18px; line-height:1.65; color:var(--muted); max-width:56ch; margin:0 0 36px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+    padding:14px 22px; border-radius:2px; text-decoration:none; cursor:pointer;
+    border:1px solid var(--navy); background:transparent; color:var(--navy);
+    transition:background .2s ease, color .2s ease;
+  }
+  .btn:hover{background:var(--navy); color:#fff;}
+  .btn.ghost{border-color:var(--line); color:var(--muted-lt);}
+  .btn.ghost:hover{border-color:var(--muted); color:var(--navy); background:transparent;}
+
+  section{padding:64px 6vw;}
+  .section-inner{max-width:740px; margin:0 auto;}
+  .section-inner.wide{max-width:1020px;}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:28px;}
+  .sec-head .tag{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--red);}
+  .sec-head h2{font-family:'Fraunces', serif; font-weight:500; font-size:clamp(24px, 3vw, 30px); margin:0;}
+  hr.rule{border:none; border-top:1px solid var(--line); margin:0;}
+  .alt{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+
+  .prose p{font-size:16.5px; line-height:1.78; color:var(--muted); max-width:66ch; margin:0 0 22px;}
+  .prose p:last-child{margin-bottom:0;}
+  .prose h4{font-family:'Fraunces', serif; font-weight:500; font-size:19px; color:var(--navy); margin:36px 0 14px;}
+  .prose h4:first-child{margin-top:0;}
+
+  .pullquote{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:clamp(22px, 2.6vw, 28px); line-height:1.4; color:var(--navy);
+    border-left:3px solid var(--red); padding:6px 0 6px 24px; margin:34px 0; max-width:34ch;
+  }
+
+  .bullets{list-style:none; margin:0 0 22px; padding:0;}
+  .bullets li{position:relative; padding:9px 0 9px 22px; font-size:16px; line-height:1.6; color:var(--muted); max-width:64ch;}
+  .bullets li::before{content:"—"; position:absolute; left:0; color:var(--red);}
+
+  .framework{display:grid; grid-template-columns:1fr 1fr; gap:0 40px; border-top:1px solid var(--line); padding-top:8px; margin-top:8px;}
+  .framework .step{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);}
+  .framework .step .n{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--red); padding-top:2px;}
+  .framework .step p{margin:0; font-size:15.5px; line-height:1.5; color:var(--navy);}
+  @media (max-width:640px){ .framework{grid-template-columns:1fr;} }
+
+  .pub-block{border-top:1px solid var(--line); padding:34px 0;}
+  .pub-block:last-child{border-bottom:1px solid var(--line);}
+  .pub-head{display:flex; align-items:baseline; gap:14px; margin-bottom:12px; flex-wrap:wrap;}
+  .pub-head .kicker{font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.1em; color:var(--red);}
+  .pub-head h3{font-family:'Fraunces', serif; font-weight:500; font-size:22px; margin:0;}
+  .pub-block p{font-size:15.5px; line-height:1.7; color:var(--muted); max-width:64ch; margin:0 0 18px;}
+  .subject-tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .subject-tags span{
+    font-family:'Inter', sans-serif; font-size:12.5px; color:var(--navy);
+    background:var(--paper); border:1px solid var(--line); padding:6px 12px; border-radius:20px;
+  }
+
+  .disc-tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 26px;}
+  .disc-tags span{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--red);
+    border:1px solid var(--red); padding:7px 13px; border-radius:2px;
+  }
+
+  .team-list{list-style:none; margin:0; padding:0; border-top:1px solid var(--line);}
+  .team-list li{padding:22px 0; border-bottom:1px solid var(--line);}
+  .team-list h4{font-family:'Fraunces', serif; font-weight:500; font-size:17px; margin:0 0 6px;}
+  .team-list p{font-size:14.5px; color:var(--muted); line-height:1.6; margin:0; max-width:60ch;}
+
+  .commitment-box{background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--red); padding:26px 28px; margin-top:34px;}
+  .commitment-box .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; color:var(--red); display:block; margin-bottom:14px; text-transform:uppercase;}
+  .commitment-box .bullets li{color:var(--navy);}
+
+  .submit-section{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .submit-lede{font-size:16px; line-height:1.7; color:var(--muted); max-width:60ch; margin:0 0 34px;}
+  form#submitForm{max-width:760px;}
+  .field{margin-bottom:22px;}
+  .field label{display:block; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:9px;}
+  .field input, .field select, .field textarea{
+    width:100%; font-family:'Source Serif 4', serif; font-size:15px; padding:13px 14px;
+    border:1px solid var(--line); border-radius:2px; background:#fff; color:var(--navy);
+  }
+  .field textarea{resize:vertical; min-height:110px; line-height:1.55; font-family:'Inter',sans-serif; font-size:14.5px;}
+  .field textarea#fManuscript{min-height:190px;}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--red); outline-offset:1px; border-color:var(--red);}
+  .submit-btn{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase;
+    background:var(--navy); color:#fff; padding:15px 26px; border:none; border-radius:2px; cursor:pointer;
+    transition:background .2s ease;
+  }
+  .submit-btn:hover{background:var(--navy-soft);}
+  .submit-btn:disabled{background:var(--muted-lt); cursor:default;}
+  .form-msg{font-family:'Inter', sans-serif; font-size:13px; margin-top:14px; min-height:16px;}
+  .form-msg.error{color:var(--red);}
+  .form-msg.ok{color:#3d6b3f;}
+  .post-submit-note{font-family:'Inter', sans-serif; font-size:13.5px; color:var(--muted); margin-top:22px;}
+  .queue-link{
+    font-family:'Inter', sans-serif; font-size:13.5px; color:var(--navy); text-decoration:underline;
+    text-underline-offset:3px; background:none; border:none; padding:0; cursor:pointer; margin-top:6px; display:inline-block;
+  }
+  .queue-link:hover{color:var(--red);}
+  #queueSection{display:none;}
+  #queueSection.show{display:block;}
+  .queue-item{display:grid; grid-template-columns:100px 1fr 160px; gap:18px; padding:16px 0; border-bottom:1px solid var(--line); align-items:baseline;}
+  .queue-item .qtype{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--red); text-transform:uppercase;}
+  .queue-item .qtitle{font-family:'Fraunces', serif; font-size:15.5px;}
+  .queue-item .qmeta{font-family:'Inter', sans-serif; font-size:12px; color:var(--muted-lt); text-align:right;}
+  .queue-empty{font-family:'Inter', sans-serif; font-size:13.5px; color:var(--muted-lt); padding:30px 0; text-align:center; border:1px dashed var(--line);}
+
+  .closing{text-align:center; padding:80px 6vw;}
+  .closing p{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:clamp(20px,2.6vw,26px); line-height:1.5; color:var(--navy); max-width:38ch; margin:0 auto;
+  }
+
+  footer{padding:36px 6vw; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted-lt);}
+
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">The Institutional <span>Review</span></div>
+    <nav>
+      <a href="#why">Mission</a>
+      <a href="#publish">What We Publish</a>
+      <a href="#team">Join Us</a>
+      <a href="#submit">Submit</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="badge">FOUNDING VOLUME — EST. 2026</span>
+    <h1>Why is the institution producing this outcome?</h1>
+    <p class="lede">An interdisciplinary journal at UCLA studying how governments, courts, schools, and agencies actually work — and how they can be reformed to serve the public better.</p>
+    <div class="hero-actions">
+      <a href="#submit" class="btn">Submit Your Work</a>
+      <a href="#team" class="btn ghost">Join the Founding Team</a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="sec-head"><span class="tag">§01</span><h2>Why This Journal</h2></div>
+    <div class="prose">
+      <p>Every day, we encounter debates about immigration, reproductive healthcare, education, artificial intelligence, civil rights, criminal justice, climate policy, and countless other issues that shape public life. Behind each of these debates lies something larger: the institutions responsible for implementing laws, delivering services, protecting rights, and serving the public.</p>
+      <p>Institutions are the systems through which societies govern, educate, protect, regulate, and care for their communities. They include governments, courts, schools, universities, hospitals, law enforcement agencies, foster care systems, nonprofit organizations, and international organizations. These institutions influence nearly every aspect of society by determining how justice is administered, how children are protected, how elections are conducted, how healthcare is delivered, and how governments respond to emerging challenges. Yet while public discourse often centers on political disagreement or individual actors, less attention is given to the institutional structures that produce these outcomes.</p>
+      <p>While these discussions are important, they often overlook a more fundamental question:</p>
+    </div>
+    <div class="pullquote">Why is the institution producing these outcomes in the first place?</div>
+    <div class="prose">
+      <p>To answer that question, we must look beyond individual actors and examine the systems themselves. Institutional performance is shaped by governance, legal frameworks, incentives, oversight, organizational culture, funding, and implementation. Understanding these structural mechanisms allows us not only to explain why institutions succeed or fail, but also to identify reforms capable of strengthening them.</p>
+      <p>The Institutional Review was founded to create an interdisciplinary forum where students from diverse academic backgrounds can collaborate to study institutional performance and develop evidence-informed reforms. By bridging disciplines and applying a shared framework of institutional analysis, we seek to move beyond describing problems toward understanding their structural causes and proposing practical solutions that strengthen institutions and better serve the public.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="vision">
+  <div class="section-inner">
+    <div class="sec-head"><span class="tag">§02</span><h2>Vision Statement</h2></div>
+    <div class="prose">
+      <p>The Institutional Review envisions a society in which institutions are accountable, transparent, and continually challenged to better serve the public. Our goal is to confront institutional injustice by strengthening the public's capacity to evaluate institutions and demand systems that protect rights, respond to wrongdoing, and advance more equitable outcomes.</p>
+      <h4>Our Approach</h4>
+      <p>We believe meaningful reform begins with understanding why institutions produce the outcomes they do. Rather than focusing solely on individual actors or isolated events, our scholarship examines the structural mechanisms that shape institutional performance.</p>
+      <p>Every publication follows a shared framework of institutional analysis, asking five fundamental questions:</p>
+    </div>
+    <div class="framework">
+      <div class="step"><span class="n mono">01</span><p>What is the problem?</p></div>
+      <div class="step"><span class="n mono">02</span><p>Why does it exist?</p></div>
+      <div class="step"><span class="n mono">03</span><p>What institutional mechanisms contribute to it?</p></div>
+      <div class="step"><span class="n mono">04</span><p>What reforms could address it?</p></div>
+      <div class="step"><span class="n mono">05</span><p>What outcomes should those reforms achieve?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="publish" id="publish">
+  <div class="section-inner wide">
+    <div class="sec-head"><span class="tag">§03</span><h2>What We Publish</h2></div>
+    <div class="prose">
+      <p>The Institutional Review publishes interdisciplinary scholarship that examines how institutions shape people's lives, why they produce unequal or ineffective outcomes, and how they can be reformed to better serve the public.</p>
+      <p>Our contributors begin with issues they care deeply about — human rights, immigration, reproductive healthcare, civil rights, education, foster care, criminal justice, technology, public health, environmental protection, and beyond — and investigate the institutions responsible for shaping those outcomes.</p>
+      <p>A student concerned about reproductive healthcare might examine how hospital policies, state regulations, insurance structures, and medical oversight affect access to care. A contributor interested in immigration might study how court backlogs, administrative discretion, legal representation, and detention systems influence due process. A student focused on child welfare might analyze how licensing rules, reporting systems, funding incentives, and oversight structures affect the safety of children in institutional care.</p>
+      <p>Although these subjects differ, every publication is connected by a shared purpose: to move beyond identifying injustice and toward understanding the systems that sustain it. We seek scholarship that asks:</p>
+    </div>
+    <ul class="bullets">
+      <li>What institution holds responsibility for the issue?</li>
+      <li>What purpose is that institution supposed to serve?</li>
+      <li>Why is it producing its current outcomes?</li>
+      <li>Which laws, incentives, governance structures, or administrative practices contribute to those outcomes?</li>
+      <li>What reforms could produce a more just and effective system?</li>
+    </ul>
+    <div class="prose">
+      <p>Our goal is to give students the opportunity to transform their academic interests and lived concerns into rigorous, constructive research. Contributors will not simply comment on public problems — they will learn to investigate institutional structures, evaluate evidence, compare alternative models, and develop practical recommendations for reform.</p>
+    </div>
+
+    <div class="pub-block">
+      <div class="pub-head"><span class="kicker">LONG-FORM</span><h3>Institutional Case Studies</h3></div>
+      <p>The Journal's principal form of long-form scholarship. Each study focuses on a specific institution or system and examines the gap between its intended purpose and its actual performance — identifying the people affected, analyzing the structural causes of institutional outcomes, and proposing legal, administrative, or organizational reforms.</p>
+      <div class="subject-tags">
+        <span>Residential treatment oversight</span><span>Immigration court administration</span>
+        <span>Access to reproductive healthcare</span><span>Foster care monitoring</span>
+        <span>Civil-rights enforcement</span><span>Public-school discipline</span>
+        <span>Prison oversight</span><span>University accountability</span>
+        <span>Election administration</span><span>AI governance</span>
+        <span>Environmental regulation</span><span>Public-health infrastructure</span>
+      </div>
+    </div>
+
+    <div class="pub-block">
+      <div class="pub-head"><span class="kicker">ACTIONABLE</span><h3>Policy Briefs</h3></div>
+      <p>Rather than examining an entire institution, a Policy Brief addresses one specific institutional problem and proposes a defined response — clear, accessible, and useful to audiences beyond the university.</p>
+      <div class="subject-tags">
+        <span>Reporting systems for children in institutional care</span>
+        <span>Immigration-court case management</span>
+        <span>Agency transparency requirements</span>
+        <span>Safeguards for reproductive-health data</span>
+        <span>University complaint procedures</span>
+        <span>Oversight for automated decision-making</span>
+      </div>
+    </div>
+
+    <div class="pub-block">
+      <div class="pub-head"><span class="kicker">CROSS-SYSTEM</span><h3>Comparative Analyses</h3></div>
+      <p>Comparative Analyses examine how different institutions respond to similar challenges — states, countries, historical periods, agencies, universities, courts, or healthcare systems. The goal isn't to declare one system better, but to identify the structural features that produce different outcomes.</p>
+      <div class="subject-tags">
+        <span>Foster-care oversight, state by state</span>
+        <span>Election administration across democracies</span>
+        <span>Equitable access to reproductive care</span>
+        <span>Civilian-oversight body authority</span>
+        <span>Regulating emerging technologies</span>
+        <span>Human-rights enforcement safeguards</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="interdisciplinary">
+  <div class="section-inner">
+    <div class="sec-head"><span class="tag">§04</span><h2>A Place for Interdisciplinary Inquiry</h2></div>
+    <div class="prose">
+      <p>The Journal is not limited to one political ideology, academic department, or area of law. Institutional problems rarely belong to a single discipline. A strong publication may draw from:</p>
+    </div>
+    <div class="disc-tags">
+      <span>Law</span><span>Political Science</span><span>Public Policy</span><span>Sociology</span>
+      <span>Economics</span><span>History</span><span>Public Health</span><span>Education</span>
+      <span>Data Science</span><span>Psychology</span><span>Environmental Studies</span>
+      <span>International Relations</span><span>Gender Studies</span><span>Ethnic Studies</span>
+    </div>
+    <div class="prose">
+      <p>We are building a publication where students from different backgrounds can bring distinct forms of knowledge to a shared question: how can institutions become more accountable, more just, and more capable of serving the people whose lives they shape?</p>
+      <p>Every contributor should be able to see an issue they care about reflected in this work, and recognize that they have the ability to investigate it, challenge it, and help imagine a better institutional future.</p>
+    </div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <div class="section-inner">
+    <div class="sec-head"><span class="tag">§05</span><h2>Build Something That Lasts</h2></div>
+    <div class="prose">
+      <p>The institutions we inherit need not be the institutions we leave behind. Join us in building a future shaped by thoughtful scholarship, meaningful accountability, and the continued pursuit of justice.</p>
+      <h4>Your Role in the Mission</h4>
+      <p>Every enduring institution begins with a small group of people willing to ask difficult questions and build something larger than themselves. As a founding member of The Institutional Review, you will have the opportunity to shape the Journal's culture, establish its traditions, and contribute to a publication designed to continue long after its founding class graduates.</p>
+      <p>Whether your interests lie in human rights, immigration, environmental policy, education, public health, artificial intelligence, criminal justice, housing, or another area of public concern, there is a place for your perspective within this Journal. We are not seeking students who already have all the answers — we are seeking students who are intellectually curious, committed to rigorous scholarship, and passionate about strengthening the institutions that shape public life.</p>
+      <h4>Who We're Looking For</h4>
+      <p>Every person brings a different story, a different perspective, and a different way of understanding the world. Those differences are not simply welcomed — they are essential to our mission. Perhaps you have witnessed a problem firsthand and want to understand why it exists. Perhaps you've spent years studying an issue that matters deeply to you. Whatever has brought you here, your perspective has the potential to ask questions that no one else can.</p>
+      <p>You do not need to be an expert. You do not need publishing experience. You simply need curiosity, a willingness to learn, and the belief that thoughtful research can contribute to a more accountable and just society. If there is an issue you care about, there is a place for you here.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="founding-team">
+  <div class="section-inner">
+    <div class="sec-head"><span class="tag">§06</span><h2>Join the Founding Team</h2></div>
+    <div class="prose">
+      <p>The Institutional Review is more than a publication — it's an opportunity to establish a lasting community of students committed to rigorous scholarship, institutional accountability, and the continued pursuit of justice. As a founding member, you will help shape not only the Journal's first publication, but also the traditions, standards, and culture that will guide future generations of contributors.</p>
+      <p>We are seeking students who are excited to help build this organization from the ground up. Whether your strengths lie in leadership, writing, research, editing, organization, or design, every role plays an essential part in advancing our mission.</p>
+    </div>
+    <ul class="team-list">
+      <li><h4>Executive Director</h4><p>Leads the long-term vision and strategic development of the Journal — guiding the organization's growth, building relationships across campus, and ensuring every initiative remains faithful to our mission.</p></li>
+      <li><h4>Editor-in-Chief</h4><p>Oversees the Journal's scholarly vision and editorial excellence, working closely with authors and editors to ensure every publication reflects our standards of rigorous institutional analysis and evidence-informed reform.</p></li>
+      <li><h4>Managing Editor</h4><p>Coordinates the publication process from submission to release — keeping projects moving, supporting the editorial team, and ensuring every issue is published efficiently and professionally.</p></li>
+      <li><h4>Research &amp; Methodology Director</h4><p>Safeguards the Journal's commitment to rigorous scholarship, supporting writers in developing strong research, applying the Institutional Analysis Framework, and producing evidence-informed recommendations.</p></li>
+      <li><h4>Publications &amp; Digital Director</h4><p>Shapes how the Journal is experienced by the public — designing each issue and maintaining the website and digital archive so our scholarship is presented with professionalism and lasting impact.</p></li>
+    </ul>
+
+    <div class="commitment-box">
+      <span class="eyebrow">Founding Commitment</span>
+      <p style="font-family:'Inter',sans-serif; font-size:14.5px; color:var(--navy); line-height:1.6; margin:0 0 16px;">Leadership within the Journal is both a privilege and a responsibility. Every Executive Board member contributes not only to the organization's operation but also to its scholarship. Founding leaders are expected to:</p>
+      <ul class="bullets" style="margin-bottom:0;">
+        <li>Publish at least one original article, policy brief, or institutional case study each academic quarter.</li>
+        <li>Participate in the editorial review process.</li>
+        <li>Mentor and support fellow contributors.</li>
+        <li>Uphold the Journal's mission, methodology, and standards of scholarship.</li>
+        <li>Help shape an organization designed to continue serving UCLA long after its founding members graduate.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="submit-section" id="submit">
+  <div class="section-inner">
+    <div class="sec-head"><span class="tag">§07</span><h2>Submit Your Work</h2></div>
+    <p class="submit-lede">No prior publishing experience required. Paste your manuscript below, or link to a Google Doc if you'd rather share it that way — we'll follow up by email.</p>
+
+    <form id="submitForm">
+      <div class="field">
+        <label for="fName">Full Name</label>
+        <input type="text" id="fName" name="name" required>
+      </div>
+      <div class="field">
+        <label for="fEmail">Email</label>
+        <input type="email" id="fEmail" name="email" required>
+      </div>
+      <div class="field">
+        <label for="fYearMajor">Year &amp; Major</label>
+        <input type="text" id="fYearMajor" name="yearMajor" placeholder="e.g. 2nd year, Political Science" required>
+      </div>
+      <div class="field">
+        <label for="fType">Submission Type</label>
+        <select id="fType" name="submissionType" required>
+          <option>Institutional Case Study</option>
+          <option>Policy Brief</option>
+          <option>Comparative Analysis</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fTitle">Working Title</label>
+        <input type="text" id="fTitle" name="title" required>
+      </div>
+      <div class="field">
+        <label for="fAbstract">Abstract (2–4 sentences)</label>
+        <textarea id="fAbstract" name="abstract" required></textarea>
+      </div>
+      <div class="field">
+        <label for="fManuscript">Manuscript Text — or paste a Google Doc share link</label>
+        <textarea id="fManuscript" name="manuscript" placeholder="Paste your draft, or a link like https://docs.google.com/..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Submit for Review</button>
+      <div class="form-msg" id="formMsg"></div>
+      <p class="post-submit-note">Submissions go straight to the editorial team's inbox for review.</p>
+    </form>
+  </div>
+</section>
+
+<div class="closing">
+  <p>If there is a system you believe can be improved, we want to help you investigate it.</p>
+</div>
+
+<footer>
+  The Institutional Review · UCLA · Founding Volume, 2026
+</footer>
+
+<script>
+(function(){
+  // Replace YOUR_FORM_ID below with your Formspree endpoint ID (from https://formspree.io/f/YOUR_FORM_ID)
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+  const form = document.getElementById('submitForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formMsg = document.getElementById('formMsg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    formMsg.textContent = '';
+    formMsg.className = 'form-msg';
+
+    if(FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')){
+      formMsg.textContent = 'Form isn\'t connected yet — add your Formspree endpoint in the code.';
+      formMsg.className = 'form-msg error';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    try{
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+
+      if(response.ok){
+        formMsg.textContent = 'Submission received — you\'ll hear from the editorial team by email.';
+        formMsg.className = 'form-msg ok';
+        form.reset();
+      }else{
+        const data = await response.json().catch(() => null);
+        const detail = data && data.errors ? data.errors.map(er => er.message).join(', ') : '';
+        formMsg.textContent = 'Something went wrong submitting your work — please try again.' + (detail ? ' (' + detail + ')' : '');
+        formMsg.className = 'form-msg error';
+      }
+    }catch(err){
+      formMsg.textContent = 'Something went wrong submitting your work — please check your connection and try again.';
+      formMsg.className = 'form-msg error';
+      console.error('Formspree submit error:', err);
+    }finally{
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit for Review';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
